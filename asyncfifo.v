@@ -60,9 +60,9 @@ always@(posedge rd_clk)begin
 	wr_toggle_f_rd_clk<=wr_toggle_f;
 end
 always@(*) begin
-	if(wr_ptr==rd_ptr && wr_toggle_f!=rd_toggle_f) full=1;
+	if(wr_ptr==rd_ptr_wr_clk && wr_toggle_f!=rd_toggle_f_wr_clk) full=1;
 	else full=0;
-	if(wr_ptr==rd_ptr && wr_toggle_f==rd_toggle_f) empty=1;
+	if(wr_ptr_rd_clk==rd_ptr && wr_toggle_f_rd_clk==rd_toggle_f) empty=1;
 	else empty=0;
 end
 endmodule
